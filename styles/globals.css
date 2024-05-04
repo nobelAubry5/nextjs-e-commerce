@@ -1,33 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* slick-arrow slick-prev
+.slick-arrow slick-next */
+/* Custom styles for slick carousel arrows */
+.slick-prev,
+.slick-next {
+  width: 30px;
+  height: 30px;
+  background-color: green; /* Change background color */
+  border-radius: 50%; /* Make them circular */
+  z-index: 1;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.slick-prev:before,
+.slick-next:before {
+  font-size: 20px;
+  color: red; /* Change arrow color */
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.slick-prev {
+  left: 10px;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.slick-next {
+  right: 10px;
+}
+
+/* Custom styles for slick carousel dots */
+.slick-dots li button:before {
+  color: #333; /* Change dot color */
+}
+
+.slick-dots li.slick-active button:before {
+  color: #fff; /* Change active dot color */
 }
