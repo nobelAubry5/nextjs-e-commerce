@@ -2,20 +2,22 @@ import Link from "next/link";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { IoIosCart } from "react-icons/io";
 export default function Produits(props) {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    fade: false,
+    autoplay: false,
+    autoplaySpeed: 5000,
+    pauseOnHover: true,
   };
   console.log(props);
   return (
-    <div className="bg-[#efefef]">
-      <div className="mx-auto max-w-[350px]">
+    <div className="bg-[#ECECEE]">
+      <div className="mx-auto max-w-[350px] sm:max-w-sm md:max-w-[40rem] lg:max-w-[45rem]">
         <h1 className="text-2xl font-bold my-8">List of products</h1>
-        <div className=" grid grid-cols-2 gap-4">
+        <div className=" grid grid-cols-2 md:grid-cols-3 gap-4">
           {props.products.map((item) => (
             <div className="bg-white rounded-lg px-3">
               <Link href={`/products/${item.id}`} className="cursor-pointer">
@@ -30,11 +32,19 @@ export default function Produits(props) {
                     </div>
                   ))}
                 </Slider>
-                <h2 className="text-sm font-semibold mt-2 mb-2">
-                  {item.title}
-                </h2>
-                <p className="text-xs text-slate-600">{item.category.name}</p>
-                <p className="text-sm font-bold">{item.price}$</p>
+                <h2 className="text-sm font-semibold mt-2">{item.title}</h2>
+
+                <div className="flex flex-row justify-between my-2">
+                  <div>
+                    <p className="text-xs text-slate-600">
+                      {item.category.name}
+                    </p>
+                    <p className="text-sm font-bold">{item.price}$</p>
+                  </div>
+                  <div className="">
+                    <IoIosCart className="text-white text-end text-3xl bg-black rounded-full p-2" />
+                  </div>
+                </div>
               </Link>
             </div>
           ))}
